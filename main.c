@@ -72,7 +72,6 @@ int is_even(void* n) {
  * @return 1 если число палиндром, иначе 0
  */
 
-
 int is_palindrom(void* n) {
   char** pp = (char**)n;
   char* str = *pp;
@@ -82,7 +81,7 @@ int is_palindrom(void* n) {
   }
   for (; *str != '\0'; str++, k++) {
   };
-  for (unsigned int i = 0; i < k / 2; i++) {
+  for (int i = 0; i < k / 2; i++) {
     if (str[i] != str[k - i - 1]) return 0;
   }
   return 1;
@@ -103,7 +102,7 @@ void test(void) {
     int n = filter((void*)arr, 10, sizeof(int), (void**)&res, is_even);
     ASSERT_INT(5, ==, n);
     for (int i = 0; i < n; i++) {
-      ASSERT_TRUE(is_even(&arr[i]));
+      ASSERT_TRUE(is_even(&res[i]));
     }
     free(res);
   }
