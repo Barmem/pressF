@@ -21,7 +21,15 @@ char* memcpy_(void* dest, const void* src, unsigned int size) {
   }
   return dest;
 }
-
+unsigned int str_length(const char* string) {
+  int k = 0;
+  if (string == NULL) {
+    return 0;
+  }
+  for (; *string != '\0'; string++, k++) {
+  };
+  return k;
+}
 /**
  * Фильтрует массив объектов любого типа по условию.
  * Возвращает те элементы массива, которые удовлетворяют заданному условию.
@@ -75,14 +83,8 @@ int is_even(void* n) {
 int is_palindrom(void* n) {
   char** pp = (char**)n;
   char* str = *pp;
-  int k = 0;
-  if (str == NULL) {
-    return 0;
-  }
-  for (; *str != '\0'; str++, k++) {
-  };
-  for (int i = 0; i < k / 2; i++) {
-    if (str[i] != str[k - i - 1]) return 0;
+  for (unsigned int i = 0; i < str_length(*pp) / 2; i++) {
+    if (str[i] != str[str_length(*pp) - i - 1]) return 0;
   }
   return 1;
 }
@@ -114,9 +116,6 @@ void test(void) {
     ASSERT_STR_EQUAL("aaaa", res[0]);
     ASSERT_STR_EQUAL("caac", res[1]);
     ASSERT_STR_EQUAL(" dd ", res[2]);
-    for (int i = 0; i < n; i++) {
-      free(res[i]);
-    }
     free(res);
   }
 }
