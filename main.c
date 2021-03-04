@@ -37,11 +37,21 @@ char* memcpy_(void* dest, const void* src, unsigned int size) {
  */
 int filter(const void* src, int count, int size, void** dest,
            int (*predicate)(void*)) {
-  // TODO: напиши меня!
-  // HINT: используй memcpy_ для копирования объектов,
-  // вместо оператора присванивания.
-  // HINT: можно 2 раза пробежаться по массиву src
-  return 0;
+  int n = 0;  // Кол-во подходящих элементов
+  char* str = (char*)src;
+  for (int i = 0; i < count * size; i += size) {
+    if (predicate((void*)&str[i]) == 1) n++;
+  }  //Считаем n
+  char* rez = (char*)malloc(n * size * sizeof(char));
+  int index = 0;
+  for (int i = 0; i < count * size; i += size) {
+    if (predicate((void*)&str[i]) == 1) {
+      memcpy_((void*)&rez[index], (void*)&str[i], size);
+      index += size;
+    }
+  }
+  *dest = (void*)rez;
+  return n;
 }
 
 /**
