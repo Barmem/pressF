@@ -14,6 +14,11 @@
  */
 char* memcpy_(void* dest, const void* src, unsigned int size) {
   // TODO: напиши меня!
+  char* str = (char*)src;
+  char* dek = (char*)dest;
+  for (unsigned int i = 0; i < size; i++) {
+    dek[i] = str[i];
+  }
   return dest;
 }
 
