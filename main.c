@@ -71,8 +71,20 @@ int is_even(void* n) {
  * @param str строка на проверку
  * @return 1 если число палиндром, иначе 0
  */
-int is_palindrom(void* str) {
-  // TODO: напиши меня!
+
+
+int is_palindrom(void* n) {
+  char** pp = (char**)n;
+  char* str = *pp;
+  int k = 0;
+  if (str == NULL) {
+    return 0;
+  }
+  for (; *str != '\0'; str++, k++) {
+  };
+  for (unsigned int i = 0; i < k / 2; i++) {
+    if (str[i] != str[k - i - 1]) return 0;
+  }
   return 1;
 }
 
