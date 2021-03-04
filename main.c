@@ -109,7 +109,7 @@ void test(void) {
   {
     char* arr[] = {"aaaa", "abcd", "caac", " dd ", "eqws"};
     char** res;
-    int n = filter((void*)arr, 1000, 5, (void**)&res, is_palindrom);
+    int n = filter((void*)arr, 5, sizeof(*arr), (void**)&res, is_palindrom);
     ASSERT_INT(3, ==, n);
     ASSERT_STR_EQUAL("aaaa", res[0]);
     ASSERT_STR_EQUAL("caac", res[1]);
